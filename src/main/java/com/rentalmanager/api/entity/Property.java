@@ -24,11 +24,13 @@ public class Property {
     @Column(nullable = false, updatable = false)
     private LocalDateTime created_at;
 
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Lease> leases = new ArrayList<>();
+//    TODO: Bidirectional
+//    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Lease> leases = new ArrayList<>();
 
-    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MaintenanceRequest> maintenanceRequests = new ArrayList<>();
+//    TODO: Bidirectional
+//    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<MaintenanceRequest> maintenanceRequests = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {

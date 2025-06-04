@@ -26,11 +26,13 @@ public class Tenant {
     @Column(nullable = false, updatable = false)
     private LocalDateTime created_at;
 
-    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Lease> leases = new ArrayList<>();
+//    TODO: Bidirectional
+//    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Lease> leases = new ArrayList<>();
 
-    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<MaintenanceRequest> maintenanceRequests = new ArrayList<>();
+//    TODO: Bidirectional
+//    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<MaintenanceRequest> maintenanceRequests = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {

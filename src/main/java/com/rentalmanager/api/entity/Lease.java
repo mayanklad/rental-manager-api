@@ -32,8 +32,9 @@ public class Lease {
     @Column(nullable = false, updatable = false)
     private LocalDateTime created_at;
 
-    @OneToMany(mappedBy = "lease", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RentPayment> rentPayments = new ArrayList<>();
+//    TODO: Bidirectional
+//    @OneToMany(mappedBy = "lease", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<RentPayment> rentPayments = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {

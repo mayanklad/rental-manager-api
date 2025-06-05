@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TenantResDto {
-    private long id;
+    private Long id;
     private String full_name;
     private String email;
     private String phone;

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PropertyResDto {
-    private long id;
+    private Long id;
     private String name;
     private String address;
     private String type;

@@ -26,14 +26,14 @@ public class PropertyService {
                 .toList();
     }
 
-    public PropertyResDto getById(long id) {
+    public PropertyResDto getById(Long id) {
         return entityToResDto(
                 propertyRepo.findById(id)
                         .orElseThrow(() -> new NoSuchElementException("Property not found!"))
         );
     }
 
-    public PropertyResDto update(long id, PropertyReqDto propertyReqDto) {
+    public PropertyResDto update(Long id, PropertyReqDto propertyReqDto) {
         Property property = propertyRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Property not found"));
 
         if (propertyReqDto.getName() != null && !propertyReqDto.getName().isBlank()) {
@@ -52,7 +52,7 @@ public class PropertyService {
         return entityToResDto(propertyRepo.save(property));
     }
 
-    public void delete(long id) {
+    public void delete(Long id) {
         propertyRepo.deleteById(id);
     }
 

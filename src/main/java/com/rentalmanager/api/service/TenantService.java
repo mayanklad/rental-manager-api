@@ -22,7 +22,7 @@ public class TenantService {
                 .toList();
     }
 
-    public TenantResDto getById(long id) {
+    public TenantResDto getById(Long id) {
         return entityToResDto(
                 tenantRepo.findById(id)
                         .orElseThrow(() -> new NoSuchElementException("Tenant not found!"))
@@ -35,7 +35,7 @@ public class TenantService {
         );
     }
 
-    public TenantResDto update(long id, TenantReqDto tenantReqDto) {
+    public TenantResDto update(Long id, TenantReqDto tenantReqDto) {
         Tenant tenant = tenantRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Tenant not found!"));
 
         if (tenantReqDto.getFull_name() != null && !tenantReqDto.getFull_name().isBlank()) {
@@ -51,7 +51,7 @@ public class TenantService {
         return entityToResDto(tenantRepo.save(tenant));
     }
 
-    public void delete(long id) {
+    public void delete(Long id) {
         tenantRepo.deleteById(id);
     }
 

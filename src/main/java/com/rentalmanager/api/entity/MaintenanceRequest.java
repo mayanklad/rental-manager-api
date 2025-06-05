@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class MaintenanceRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "tenant_id", referencedColumnName = "id")

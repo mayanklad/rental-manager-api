@@ -13,14 +13,14 @@ import java.time.LocalDateTime;
 public class RentPayment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "lease_id", referencedColumnName = "id")
     private Lease lease;
 
     private LocalDate payment_date;
-    private float amount;
+    private Float amount;
     private String status;
 
     @Column(nullable = false, updatable = false)

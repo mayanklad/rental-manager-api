@@ -21,7 +21,7 @@ public class PropertyController {
     }
 
     @GetMapping("/{id}")
-    public PropertyResDto getById(@PathVariable long id) {
+    public PropertyResDto getById(@PathVariable Long id) {
         return propertyService.getById(id);
     }
 
@@ -32,12 +32,12 @@ public class PropertyController {
 
 //    TODO: Validation for update
     @PutMapping("/{id}")
-    public PropertyResDto update(@PathVariable long id, @RequestBody PropertyReqDto propertyReqDto) {
+    public PropertyResDto update(@PathVariable Long id, @RequestBody PropertyReqDto propertyReqDto) {
         return propertyService.update(id, propertyReqDto);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable long id) {
+    public void delete(@PathVariable Long id) {
         propertyService.delete(id);
     }
 }

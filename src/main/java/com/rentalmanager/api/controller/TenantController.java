@@ -21,7 +21,7 @@ public class TenantController {
     }
 
     @GetMapping("/{id}")
-    public TenantResDto getById(@PathVariable long id) {
+    public TenantResDto getById(@PathVariable Long id) {
         return tenantService.getById(id);
     }
 
@@ -32,12 +32,12 @@ public class TenantController {
 
 //    TODO: Validation for update
     @PutMapping("/{id}")
-    public TenantResDto update(@PathVariable long id, @RequestBody TenantReqDto tenantReqDto) {
+    public TenantResDto update(@PathVariable Long id, @RequestBody TenantReqDto tenantReqDto) {
         return tenantService.update(id, tenantReqDto);
     }
 
     @DeleteMapping("/{id}")
-    public void update(@PathVariable long id) {
+    public void update(@PathVariable Long id) {
         tenantService.delete(id);
     }
 }

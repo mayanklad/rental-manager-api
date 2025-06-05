@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class Lease {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "property_id", referencedColumnName = "id")
@@ -27,7 +27,7 @@ public class Lease {
 
     private LocalDate start_date;
     private LocalDate end_date;
-    private float rent_amount;
+    private Float rent_amount;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime created_at;

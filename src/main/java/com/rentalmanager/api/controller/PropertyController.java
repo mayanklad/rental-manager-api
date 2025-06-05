@@ -4,14 +4,12 @@ import com.rentalmanager.api.dto.PropertyReqDTO;
 import com.rentalmanager.api.dto.PropertyResDTO;
 import com.rentalmanager.api.service.PropertyService;
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@Slf4j
 @RequestMapping("/api/property")
 public class PropertyController {
     @Autowired
@@ -29,7 +27,6 @@ public class PropertyController {
 
     @PostMapping
     public PropertyResDTO create(@Valid @RequestBody PropertyReqDTO propertyReqDTO) {
-        log.debug(propertyReqDTO.toString());
         return propertyService.create(propertyReqDTO);
     }
 

@@ -31,7 +31,7 @@ public class PropertyController {
     }
 
     @PutMapping("/{id}")
-    public PropertyResDTO update(@PathVariable long id, @Valid @RequestBody PropertyReqDTO propertyReqDTO) {
+    public PropertyResDTO update(@PathVariable long id, @RequestBody PropertyReqDTO propertyReqDTO) {
         return propertyService.update(id, propertyReqDTO);
     }
 

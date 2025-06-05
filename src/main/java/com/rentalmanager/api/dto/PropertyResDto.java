@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PropertyResDTO {
+public class PropertyResDto {
     private long id;
     private String name;
     private String address;

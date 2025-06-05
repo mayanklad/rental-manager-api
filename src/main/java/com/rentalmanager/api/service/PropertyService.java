@@ -1,7 +1,7 @@
 package com.rentalmanager.api.service;
 
-import com.rentalmanager.api.dto.PropertyReqDTO;
-import com.rentalmanager.api.dto.PropertyResDTO;
+import com.rentalmanager.api.dto.PropertyReqDto;
+import com.rentalmanager.api.dto.PropertyResDto;
 import com.rentalmanager.api.entity.Property;
 import com.rentalmanager.api.repository.PropertyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,49 +15,49 @@ public class PropertyService {
     @Autowired
     private PropertyRepo propertyRepo;
 
-    public PropertyResDTO create(PropertyReqDTO propertyReqDTO) {
-        return entityToResDTO(propertyRepo.save(reqDTOToEntity(propertyReqDTO)));
+    public PropertyResDto create(PropertyReqDto propertyReqDto) {
+        return entityToResDto(propertyRepo.save(reqDTOToEntity(propertyReqDto)));
     }
 
-    public List<PropertyResDTO> getAll() {
+    public List<PropertyResDto> getAll() {
         return propertyRepo.findAll()
                 .stream()
-                .map(this::entityToResDTO)
+                .map(this::entityToResDto)
                 .toList();
     }
 
-    public PropertyResDTO getById(long id) {
-        return entityToResDTO(
+    public PropertyResDto getById(long id) {
+        return entityToResDto(
                 propertyRepo.findById(id)
                         .orElseThrow(() -> new NoSuchElementException("Property not found!"))
         );
     }
 
-    public PropertyResDTO update(long id, PropertyReqDTO propertyReqDTO) {
+    public PropertyResDto update(long id, PropertyReqDto propertyReqDto) {
         Property property = propertyRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Property not found"));
 
-        if (propertyReqDTO.getName() != null && !propertyReqDTO.getName().isBlank()) {
-            property.setName(propertyReqDTO.getName());
+        if (propertyReqDto.getName() != null && !propertyReqDto.getName().isBlank()) {
+            property.setName(propertyReqDto.getName());
         }
-        if (propertyReqDTO.getAddress() != null && !propertyReqDTO.getAddress().isBlank()) {
-            property.setAddress(propertyReqDTO.getAddress());
+        if (propertyReqDto.getAddress() != null && !propertyReqDto.getAddress().isBlank()) {
+            property.setAddress(propertyReqDto.getAddress());
         }
-        if (propertyReqDTO.getType() != null && !propertyReqDTO.getType().isBlank()) {
-            property.setType(propertyReqDTO.getType());
+        if (propertyReqDto.getType() != null && !propertyReqDto.getType().isBlank()) {
+            property.setType(propertyReqDto.getType());
         }
-        if (propertyReqDTO.getDescription() != null) {
-            property.setDescription(propertyReqDTO.getDescription());
+        if (propertyReqDto.getDescription() != null) {
+            property.setDescription(propertyReqDto.getDescription());
         }
 
-        return entityToResDTO(propertyRepo.save(property));
+        return entityToResDto(propertyRepo.save(property));
     }
 
     public void delete(long id) {
         propertyRepo.deleteById(id);
     }
 
-    private PropertyResDTO entityToResDTO(Property property) {
-        return new PropertyResDTO(
+    private PropertyResDto entityToResDto(Property property) {
+        return new PropertyResDto(
                 property.getId(),
                 property.getName(),
                 property.getAddress(),
@@ -67,12 +67,12 @@ public class PropertyService {
         );
     }
 
-    private Property reqDTOToEntity(PropertyReqDTO propertyReqDTO) {
+    private Property reqDTOToEntity(PropertyReqDto propertyReqDto) {
         Property property = new Property();
-        property.setName(propertyReqDTO.getName());
-        property.setAddress(propertyReqDTO.getAddress());
-        property.setType(propertyReqDTO.getType());
-        property.setDescription(propertyReqDTO.getDescription());
+        property.setName(propertyReqDto.getName());
+        property.setAddress(propertyReqDto.getAddress());
+        property.setType(propertyReqDto.getType());
+        property.setDescription(propertyReqDto.getDescription());
 
         return property;
     }

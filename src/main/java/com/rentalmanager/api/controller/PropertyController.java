@@ -1,7 +1,7 @@
 package com.rentalmanager.api.controller;
 
-import com.rentalmanager.api.dto.PropertyReqDTO;
-import com.rentalmanager.api.dto.PropertyResDTO;
+import com.rentalmanager.api.dto.PropertyReqDto;
+import com.rentalmanager.api.dto.PropertyResDto;
 import com.rentalmanager.api.service.PropertyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +16,24 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @GetMapping
-    public List<PropertyResDTO> getAll() {
+    public List<PropertyResDto> getAll() {
         return propertyService.getAll();
     }
 
     @GetMapping("/{id}")
-    public PropertyResDTO getById(@PathVariable long id) {
+    public PropertyResDto getById(@PathVariable long id) {
         return propertyService.getById(id);
     }
 
     @PostMapping
-    public PropertyResDTO create(@Valid @RequestBody PropertyReqDTO propertyReqDTO) {
-        return propertyService.create(propertyReqDTO);
+    public PropertyResDto create(@Valid @RequestBody PropertyReqDto propertyReqDto) {
+        return propertyService.create(propertyReqDto);
     }
 
+//    TODO: Validation for update
     @PutMapping("/{id}")
-    public PropertyResDTO update(@PathVariable long id, @RequestBody PropertyReqDTO propertyReqDTO) {
-        return propertyService.update(id, propertyReqDTO);
+    public PropertyResDto update(@PathVariable long id, @RequestBody PropertyReqDto propertyReqDto) {
+        return propertyService.update(id, propertyReqDto);
     }
 
     @DeleteMapping("/{id}")

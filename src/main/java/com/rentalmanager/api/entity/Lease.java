@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,9 +22,13 @@ public class Lease {
     @JoinColumn(name = "property_id", referencedColumnName = "id")
     private Property property;
 
-    @ManyToOne
-    @JoinColumn(name = "tenant_id", referencedColumnName = "id")
-    private Tenant tenant;
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "lease_tenant",
+            joinColumns = @JoinColumn(name = "lease_id"),
+            inverseJoinColumns = @JoinColumn(name = "tenant_id")
+    )
+    private List<Tenant> tenants;
 
     private LocalDate start_date;
     private LocalDate end_date;
@@ -31,10 +36,6 @@ public class Lease {
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime created_at;
-
-//    TODO: Bidirectional
-//    @OneToMany(mappedBy = "lease", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<RentPayment> rentPayments = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {

@@ -10,15 +10,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class RentalManagerApiApplication {
 
-	@Value("${frontend.url}")
-	private String FRONTEND_URL;
-
 	public static void main(String[] args) {
 		SpringApplication.run(RentalManagerApiApplication.class, args);
 	}
 
 	@Bean
-	public WebMvcConfigurer corsConfigurer() {
+	public WebMvcConfigurer corsConfigurer(@Value("${frontend.url}") String FRONTEND_URL) {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
